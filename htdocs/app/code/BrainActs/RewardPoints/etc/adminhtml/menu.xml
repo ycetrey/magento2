@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2018 BrainActs Commerce OÜ, All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="BrainActs_RewardPoints::reward_points" title="Reward Points" translate="title" module="BrainActs_RewardPoints" sortOrder="30" parent="Magento_Sales::sales" resource="BrainActs_RewardPoints::reward_points"/>
+
+        <add id="BrainActs_RewardPoints::reward_earning_rule" title="Earning Rules" action="points/rule_earning" translate="title" module="BrainActs_RewardPoints" sortOrder="10" parent="BrainActs_RewardPoints::reward_points" resource="BrainActs_RewardPoints::rule_earning"/>
+        <add id="BrainActs_RewardPoints::reward_spend_rule" title="Spending Rules" action="points/rule_spend" translate="title" module="BrainActs_RewardPoints" sortOrder="20" parent="BrainActs_RewardPoints::reward_points" resource="BrainActs_RewardPoints::rule_spend"/>
+        <add id="BrainActs_RewardPoints::reward_history" title="History" action="points/history" translate="title" module="BrainActs_RewardPoints" sortOrder="30" parent="BrainActs_RewardPoints::reward_points" resource="BrainActs_RewardPoints::history"/>
+    </menu>
+</config>

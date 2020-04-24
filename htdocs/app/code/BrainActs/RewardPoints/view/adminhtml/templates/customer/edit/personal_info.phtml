@@ -1,0 +1,26 @@
+<?php
+/**
+ * Copyright (c) 2018 BrainActs Commerce OÜ, All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+/**
+ * @var $block \BrainActs\RewardPoints\Block\Adminhtml\Customer\Edit\RewardInfo
+ */
+
+$points = $block->getRewardPoints();
+?>
+
+<div class="fieldset-wrapper customer-information">
+    <div class="fieldset-wrapper-title">
+        <span class="title"><?php /* @escapeNotVerified */ echo __('Reward Points Information') ?></span>
+    </div>
+    <table class="admin__table-secondary">
+        <tbody>
+        <tr>
+            <th><?php /* @escapeNotVerified */ echo __('Current Points:') ?></th>
+            <td><strong><?php /* @escapeNotVerified */ echo $points ?></strong></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

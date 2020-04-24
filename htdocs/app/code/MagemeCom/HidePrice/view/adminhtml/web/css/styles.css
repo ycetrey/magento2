@@ -1,0 +1,30 @@
+.mageme-plugin {
+    width: 20rem;
+    float: left;
+    display: block;
+    text-align: center;
+    margin-right: 2rem;
+    transition: box-shadow 0.3s ease-in-out;
+    box-shadow:0 1px 2px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+}
+.mageme-plugin:hover{
+    box-shadow:0 5px 9px 0 rgba(0,0,0,.16),0 2px 10px 0 rgba(0,0,0,.12);
+}
+.mageme-plugin a {
+    font-size:medium;
+    font-weight: bold;
+
+}
+.mageme-plugin a:hover{
+    text-decoration:none;
+}
+.mageme-plugin img {
+    margin-top:.5rem;
+    margin-bottom: 1rem;
+    width:18rem;
+}
+
+.mageme-plugin-description {
+    font-size: small;
+    padding:.5rem 1rem 1.5rem 1rem;
+}

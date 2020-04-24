@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <hideprice>
+            <general>
+                <button_text><![CDATA[Click for info]]></button_text>
+                <alert_icon><![CDATA[info]]></alert_icon>
+                <alert_title_text><![CDATA[Info]]></alert_title_text>
+                <alert_text><![CDATA[MagemeCom HidePrice]]></alert_text>
+                <alert_button_text><![CDATA[Close]]></alert_button_text>
+            </general>
+        </hideprice>
+    </default>
+</config>

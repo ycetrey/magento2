@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'Mcafeesecure';
+    src: url('fonts/mcafeesecure.eot');
+    src: url('fonts/mcafeesecure.woff') format('woff'),
+    url('fonts/mcafeesecure.ttf')  format('truetype'),
+    url('fonts/mcafeesecure.svg#svgFontName') format('svg');
+}
+
+.admin__menu #menu-mcafeesecure-mcafeesecure-menu > a:before {
+    font-family: 'Mcafeesecure', sans-serif;
+    content: "\e900";
+}

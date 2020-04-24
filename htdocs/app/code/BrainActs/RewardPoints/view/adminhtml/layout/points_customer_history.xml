@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2018 BrainActs Commerce OÜ, All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
+    <container name="root">
+        <block class="BrainActs\RewardPoints\Block\Adminhtml\Customer\View\Tab\History\Grid" name="reward.points.edit.tab.history"/>
+    </container>
+</layout>

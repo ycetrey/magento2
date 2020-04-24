@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <!--  
+        <add id="Wealthsystems_Masterprice::parent" title="WS Price" module="Wealthsystems_Masterprice" sortOrder="100" resource="Wealthsystems_Masterprice::parent"/>
+        <add id="Wealthsystems_Masterprice::price" title="Catalog Price" module="Wealthsystems_Masterprice" sortOrder="10" action="masterprice/index/price" resource="Wealthsystems_Masterprice::index" parent="Wealthsystems_Masterprice::parent"/>
+        <add id="Wealthsystems_Masterprice::discount" title="Catalog Discount" module="Wealthsystems_Masterprice" sortOrder="20" action="masterprice/index/discount" resource="Wealthsystems_Masterprice::index" parent="Wealthsystems_Masterprice::parent"/>
+        <add id="Wealthsystems_Masterprice::tax" title="Catalog Taxes" module="Wealthsystems_Masterprice" sortOrder="30" action="masterprice/index/tax" resource="Wealthsystems_Masterprice::index" parent="Wealthsystems_Masterprice::parent"/>
+        <add id="Wealthsystems_Masterprice::taxrule" title="Catalog Taxes Rules" module="Wealthsystems_Masterprice" sortOrder="40" action="masterprice/index/taxrule" resource="Wealthsystems_Masterprice::index" parent="Wealthsystems_Masterprice::parent"/>
+        -->
+
+        <add id="Wealthsystems_Masterb2b::masterprice" title="Manage Pricing" translate="title" module="Wealthsystems_Masterprice" sortOrder="10" parent="Wealthsystems_Masterb2b::parent" resource="Wealthsystems_Masterb2b::masterprice"/>
+    	<add id="Wealthsystems_Masterprice::price" title="Catalog Price" translate="title" module="Wealthsystems_Masterprice" sortOrder="10" parent="Wealthsystems_Masterb2b::masterprice" action="masterprice/index/price" resource="Wealthsystems_Masterprice::price"/>
+        <add id="Wealthsystems_Masterprice::discount" title="Catalog Discount" translate="title" module="Wealthsystems_Masterprice" sortOrder="10" parent="Wealthsystems_Masterb2b::masterprice" action="masterprice/index/discount" resource="Wealthsystems_Masterprice::discount"/>
+    	<add id="Wealthsystems_Masterprice::tax" title="Catalog Taxes" translate="title" module="Wealthsystems_Masterprice" sortOrder="10" parent="Wealthsystems_Masterb2b::masterprice" action="masterprice/index/tax" resource="Wealthsystems_Masterprice::price"/>
+    	<add id="Wealthsystems_Masterprice::taxrule" title="Catalog Taxes Rules" translate="title" module="Wealthsystems_Masterprice" sortOrder="10" parent="Wealthsystems_Masterb2b::masterprice" action="masterprice/index/taxrule" resource="Wealthsystems_Masterprice::price"/>
+    
+    </menu>
+</config>

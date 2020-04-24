@@ -1,0 +1,16 @@
+<?php
+/**
+ * Copyright (c) 2018 BrainActs Commerce OÜ, All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+
+/* @var $block \BrainActs\RewardPoints\Block\Adminhtml\History\Container */
+?>
+<div style="display: none"  data-mage-init='{"RewardPoints":{"customer_url":"<?php /* @escapeNotVerified */ echo $block->getCustomerUrl()?>"}}'>
+    <div id="add-remove-dialog" class="">
+        <form action="<?php /* @escapeNotVerified */ echo $block->getSaveUrl() ?>" method="post" id="points_form">
+            <?php echo $block->getBlockHtml('formkey')?>
+            <?php echo $this->getChildHtml('reward.dialog')?>
+        </form>
+    </div>
+</div>

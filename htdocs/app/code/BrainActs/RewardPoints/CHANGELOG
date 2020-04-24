@@ -1,0 +1,6 @@
+[2.0.6] - 03/23/18
+
+### Fixed
+    - Fix issue with paypal express checkout
+    - Prevent create history item without customer
+    - Bug Fixes

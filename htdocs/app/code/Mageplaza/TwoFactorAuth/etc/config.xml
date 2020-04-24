@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_TwoFactorAuth
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <mptwofactorauth>
+            <module>
+                <type>1</type>
+                <user_guide>two-factors-authentication</user_guide>
+            </module>
+            <general>
+                <enabled>1</enabled>
+                <force_2fa>0</force_2fa>
+                <trust_device>0</trust_device>
+                <trust_time>30</trust_time>
+            </general>
+        </mptwofactorauth>
+    </default>
+</config>

@@ -1,0 +1,11 @@
+<script>
+    require(['jquery'],function(){
+        jQuery( document ).ready(function(){
+          setTimeout(function(){
+            jQuery( "input[name='attach_file']" ).change(function(){
+              jQuery(".preview-image").attr('src');
+            });
+            }, 3000);
+        });
+    });
+</script>

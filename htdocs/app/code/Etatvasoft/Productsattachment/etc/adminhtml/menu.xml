@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu> 
+    	<add id="Magento_Catalog::attachment_settings" title="Products Attachment" translate="title" module="Etatvasoft_Productsattachment" sortOrder="40" parent="Magento_Catalog::catalog" resource="Magento_Catalog::attachment_settings"/>
+    	<add id="Etatvasoft_Productsattachment::productsattachment" title="Manage Products Attachment" translate="title" module="Etatvasoft_Productsattachment" sortOrder="60" parent="Magento_Catalog::attachment_settings" action="productsattachment/attachgrid" resource="Etatvasoft_Productsattachment::productsattachment"/>
+    </menu>
+</config>

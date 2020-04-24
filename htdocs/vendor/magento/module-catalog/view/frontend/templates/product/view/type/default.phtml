@@ -1,0 +1,43 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+<?php /* @var $block \Magento\Catalog\Block\Product\View\AbstractView */?>
+<?php $_product = $block->getProduct() ?>
+
+<?php if ($block->displayProductStockStatus()): ?>
+    <?php if ($_product->isAvailable()): ?>
+        <div class="stock available" title="<?= /* @escapeNotVerified */ __('Availability') ?>">
+            <span><?= /* @escapeNotVerified */ __('In stock') ?></span>
+        </div>
+        <div class="available-quantity">
+            <span><?= __('Available Quantity') ?>: </span><span><?= $_product->getStockQty() ?></span>
+        </div>
+    <?php else: ?>
+        <div class="stock unavailable" title="<?= /* @escapeNotVerified */ __('Availability') ?>">
+            <span><?= /* @escapeNotVerified */ __('Out of stock') ?></span>            
+        </div>
+
+        <?php
+        if($_product->getArrivalForecast()){
+            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+            $dateTimeFormatter = $objectManager->get('Magento\Framework\Stdlib\DateTime\DateTimeFormatterInterface');
+
+            $staticDate = new \DateTime(substr($_product->getArrivalForecast(),0,10));
+
+            $convertedDate = $dateTimeFormatter->formatObject($staticDate, \IntlDateFormatter::MEDIUM, 'pt_BR');
+        ?>
+        <div class="arrival-forecast">
+            <span><?= __('Arrival Forecast') ?></span>
+            <br><span><?= str_replace(' 00:00:00','',$convertedDate) ?></span>
+        </div>
+        <?php
+        }
+        ?>
+    <?php endif; ?>
+<?php endif; ?>

@@ -1,0 +1,22 @@
+<?php
+$checkoutData = $block->getCheckoutData();
+?>
+
+<div class="checkout-success">
+    <script>
+        require(['jquery'], function($){
+            var sipScript = document.createElement('script');
+            sipScript.setAttribute("class",             "trustedsite-track-conversion");
+            sipScript.setAttribute("type",              "text/javascript");
+            sipScript.setAttribute("data-type",         "purchase");
+            sipScript.setAttribute("data-email",        "<?= $block->escapeJs($checkoutData['email']) ?>");
+            sipScript.setAttribute("data-firstname",    "<?= $block->escapeJs($checkoutData['firstname']) ?>");
+            sipScript.setAttribute("data-lastname",     "<?= $block->escapeJs($checkoutData['lastname']) ?>");
+            sipScript.setAttribute("data-state",        "<?= $block->escapeJs($checkoutData['region']) ?>");
+            sipScript.setAttribute("data-country",      "<?= $block->escapeJs($checkoutData['country']) ?>");
+            sipScript.setAttribute("data-orderid",      "<?= $block->escapeJs($checkoutData['orderid']) ?>");
+            sipScript.setAttribute("src",               "https://cdn.ywxi.net/js/conversion.js");
+            document.getElementsByTagName("head")[0].appendChild(sipScript);
+        });
+    </script>
+</div>

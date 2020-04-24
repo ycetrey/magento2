@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2018 BrainActs Commerce OÜ, All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer_edit_tab_view">
+            <block class="BrainActs\RewardPoints\Block\Adminhtml\Customer\Edit\RewardInfo" name="reward_points_info" after="personal_info" template="customer/edit/personal_info.phtml"/>
+        </referenceBlock>
+
+        <referenceBlock name="customer_form">
+            <block class="BrainActs\RewardPoints\Block\Adminhtml\Customer\View\Tab\History" name="customer_edit_tab_points">
+                <action method="setTabLabel">
+                    <argument name="label" xsi:type="string">Reward Points History</argument>
+                </action>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

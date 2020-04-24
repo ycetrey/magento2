@@ -1,0 +1,131 @@
+.table-bargain{
+    border: 1px solid #d4d4d4;
+    border-radius: 4px;
+}
+.table-bargain .item-bargain{
+    display: flex;
+    padding: 4px;
+    border-bottom: 1px solid #d6d6d6;
+}
+.table-bargain .item-bargain:first-child div{
+    border: none;
+}
+.table-bargain .item-bargain:first-child div span{
+    font-weight: 600;
+    color: #333 !important;
+}
+.table-bargain .item-bargain:last-child{
+    border-bottom: none;
+}
+.table-bargain .item-bargain div{
+    display: flex;
+    padding: 2px;   
+    border-right: 1px solid #d6d6d6;       
+    padding-left: 10px;
+}        
+.table-bargain .item-bargain .item-id{
+    width: 6%; 
+}
+.table-bargain .item-bargain .item-product{
+    width: 25%; 
+}
+.table-bargain .item-bargain .item-price{
+    width: 10%; 
+    font-weight: 600;
+    color: #1a829c;
+}        
+.table-bargain .item-bargain .item-customer{
+    width: 25%; 
+}
+.table-bargain .item-bargain .item-date{
+    width: 15%; 
+}
+.table-bargain .item-bargain .item-status{
+    width: 25%; 
+    border-right: none;
+    padding: 0 !important;
+}  
+.table-bargain .item-bargain .item-status-option{
+    width: calc(100% - 35px); 
+}  
+.table-bargain .item-bargain .item-status select{
+    width: calc(66.6% - 8px);
+    margin: 0 4px !important;
+    border: none;
+    padding: 0 2px;
+    font-size: 12px;
+}        
+.table-bargain .item-bargain .save{
+    width: calc(33.3% - 8px);
+    margin: 0 4px !important;
+    border: none;
+    color: #fff;
+    background: #259dc1;
+    padding: 0;
+    font-size: 12px;
+}  
+.more-views-bargain{
+    padding-bottom: 10px;
+}
+.more-views-bargain button{
+    background: #eb5433;
+    color: #fff;
+    border: none;
+    padding: 6px 25px;
+}
+.more-views-bargain .bargain-filter{
+    border: 1px solid #eb5433;
+    margin-top: -1px;
+    border-radius: 5px;
+    padding: 3px 10px 7px 10px;
+    width: min-content;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    display: block;
+    border-top: 4px solid #eb5433;
+}
+.more-views-bargain .bargain-filter .field{
+    display: table-cell;
+    width: 200px;
+    padding: 4px 8px;
+}
+.more-views-bargain .bargain-filter .field button{
+    background: #d6d6d6;
+    color: #444;
+    padding: 4px 25px;
+    border-radius: 4px;
+    font-weight: 400;
+}
+.more-views-bargain .bargain-filter .field label{
+    display: inline-block;
+}
+.more-views-bargain .bargain-filter .field input{
+    border-radius: 3px;
+    border: 1px solid #d0d0d0;
+    padding: 2px 5px;
+}
+.message-save {
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.7);
+    position: fixed;
+    width: calc(100% - 44px);
+    height: 100%;
+    top: 0;
+    left: 88px;
+    display: none;
+}
+.wstheme-loading {
+    height: 100% !important;
+    position: fixed !important;
+    display: none;
+}
+
+.save-success {
+    font-size: 2rem;
+    left: 50%;
+    margin-left: -13rem;
+    margin-top: -3rem;
+    position: absolute;
+    top: 50%;
+    text-align: center;
+}

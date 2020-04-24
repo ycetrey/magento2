@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2018 BrainActs Commerce OÜ, All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Magento_Sales::sales">
+
+                    <resource id="BrainActs_RewardPoints::reward_points" title="Reward Points" translate="title" sortOrder="10">
+                        <resource id="BrainActs_RewardPoints::history" title="History" translate="title" sortOrder="10">
+                            <resource id="BrainActs_RewardPoints::history_save" title="Save" translate="title" sortOrder="10" />
+                            <resource id="BrainActs_RewardPoints::history_delete" title="Delete" translate="title" sortOrder="20" />
+                        </resource>
+
+                        <resource id="BrainActs_RewardPoints::rule_spend" title="Spend Rule" translate="title" sortOrder="20">
+                            <resource id="BrainActs_RewardPoints::rule_spend_save" title="Save" translate="title" sortOrder="10" />
+                            <resource id="BrainActs_RewardPoints::rule_spend_delete" title="Delete" translate="title" sortOrder="20" />
+                        </resource>
+
+                        <resource id="BrainActs_RewardPoints::rule_earning" title="Earning Rule" translate="title" sortOrder="20">
+                            <resource id="BrainActs_RewardPoints::rule_earning_save" title="Save" translate="title" sortOrder="10" />
+                            <resource id="BrainActs_RewardPoints::rule_earning_delete" title="Delete" translate="title" sortOrder="20" />
+                        </resource>
+                    </resource>
+
+                </resource>
+                <!--<resource id="Magento_Reports::report">-->
+                    <!--<resource id="BrainActs_RewardPoints::report" title="Sales Representative"  translate="title" sortOrder="10">-->
+                        <!--<resource id="BrainActs_RewardPoints::report_products" title="By Products" translate="title" sortOrder="10" />-->
+                        <!--<resource id="BrainActs_RewardPoints::report_customers" title="By Customers" translate="title" sortOrder="20" />-->
+                        <!--<resource id="BrainActs_RewardPoints::report_orders" title="By Orders" translate="title" sortOrder="20" />-->
+                    <!--</resource>-->
+                <!--</resource>-->
+
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="BrainActs_RewardPoints::config_reward_points" title="Reward Points Section" translate="title" sortOrder="60" />
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

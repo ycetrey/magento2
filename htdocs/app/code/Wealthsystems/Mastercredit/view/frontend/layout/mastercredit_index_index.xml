@@ -1,0 +1,28 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+
+	<head>
+        <title>Credit Limit</title>
+        <!--
+		demo
+		<css src="Wealthsystems_Mastercredit::css/css.css"/>
+		<script src="Wealthsystems_Mastercredit::js/js.js"/>
+		<css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+		<script src="path/file.js" defer="defer"/>
+		<link src="http://url.com" src_type="url"/>
+		<remove src="path/remove/file.css"/>
+
+		-->
+    </head>
+
+    <body>
+
+        <referenceContainer name="sidebar.main">
+            <block class="Wealthsystems\Mastercredit\Block\Index\Sidebar" name="mastercredit_index_sidebar" before="-" template="Wealthsystems_Mastercredit::mastercredit_index_sidebar.phtml"/>
+        </referenceContainer>
+
+        <referenceContainer name="content">
+            <block class="Wealthsystems\Mastercredit\Block\Index\Index" name="mastercredit_index_index" template="Wealthsystems_Mastercredit::mastercredit_index_index.phtml"/>
+        </referenceContainer>
+
+    </body>
+</page>

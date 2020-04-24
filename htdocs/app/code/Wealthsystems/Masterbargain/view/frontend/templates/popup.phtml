@@ -1,0 +1,188 @@
+
+<style>
+.popup-bargain{
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+.popup-body{
+    position: absolute;
+    width: 50%;
+    padding: 15px;
+    background: #fff;
+    min-height: 300px;
+    max-height: 350px;
+    top: 150px;
+    left: calc(25%);
+}
+.popup-body .title{
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 23px;
+    font-weight: 600;
+    color: #1b907a;
+}
+.popup-body .content{
+    width: 100%;
+    padding: 8px 0;
+    font-size: 16px;
+    color: #444;
+}
+.popup-body .content .product img{
+    max-height: 140px;    
+    display: block;
+    margin: auto;
+    margin-top: 12px;
+}
+.popup-body button{
+    border: none;
+    background: #444;
+    color: #fff;
+    float: right;
+    bottom: 0;
+}
+.popup-body .content .product button{
+    display: block;
+    float: left;
+    margin: auto;
+    background: #1b907a;
+    margin-top: 10px;
+}
+.popup-body .content .product .image{
+    width: 150px;
+    display: inline-block;
+}
+.popup-body .content .subtitle{
+    text-align: center;
+}
+.popup-body .content .product .description{
+    width: calc(100% - 155px);
+    display: inline-block;
+}
+.popup-body .content .product .description .price .old-price{
+    text-decoration: line-through
+}
+.popup-body .content .product .description .name{
+    font-weight: 600;
+}
+.popup-body .content .product .description .short-description{
+    font-size: 13.5px;
+}
+.popup-body .content .product .description .current-price{
+    font-weight: 600;
+    font-size: 20px;
+    color: #3e907b;
+}
+
+@media only screen and (max-width : 768px) {
+    .popup-body {
+        width: 90%;
+        left: 5%;
+        padding: 0;
+        top: 100px;
+        padding-top: 20px;
+    }
+    .popup-body .content .product .description .short-description {
+        display: none;
+    }
+    .popup-body .content .product {
+        display: inline-flex;
+    }
+    .popup-body .content .product .description {
+        margin-top: 15px;
+        width: calc(100% - 120px);
+    }
+    .popup-body .content .product button {
+        padding: 12px 0;
+        width: 90%;
+        text-align: center;
+    }
+    .popup-body .content .product img {
+        max-height: 120px;
+    }
+    .popup-body button {
+        margin-right: 15px;
+    }
+}
+
+</style>
+
+<script>
+function popup_close(e){
+    jQuery(e).parent().remove();
+
+    if(jQuery('.popup-body').length <= 0){
+        jQuery('.popup-bargain').remove();
+    }
+}
+</script>
+
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+
+$customerSession = $objectManager->create('Magento\Customer\Model\Session');
+
+if ($customerSession->isLoggedIn()) {
+
+    $bargain_list = $objectManager->create('\Wealthsystems\Masterbargain\Model\Bargain');
+    $bargain_list = $bargain_list->getCollection()
+        ->addFieldToFilter('customer_id', $customerSession->getCustomer()->getId())
+        ->addFieldToFilter('status', 1)
+        ->addFieldToFilter('viewed', 0);
+
+    if(count($bargain_list) > 0){
+?>
+<div class="popup-bargain">
+    <?php
+        foreach($bargain_list as $_item){
+            $_item->setViewed(1);
+            $_item->save();
+
+            $_product = $objectManager->create('Magento\Catalog\Model\Product')->load($_item->getProductId());
+            $productimages = $_product->getMediaGalleryImages()->getFirstItem();        
+    ?>
+    <div class="popup-body">
+
+        <div class="title">
+            <span>Somente para você!!</span>
+        </div>
+
+        <div class="content">
+            <div class="subtitle">
+                <span>Você pediu e o preço abaixou para R$<?= number_format($_product->getPrice(),2,',','.') ?></span>
+            </div>
+
+            <div class="product">
+                <div class="image">
+                    <img src="<?= $productimages->getUrl() ?>">
+                </div>
+                <div class="description">
+                    <span class="name"><?= $_product->getName() ?></span><br>
+                    <span class="short-description"><?= $_product->getShortDescription() ?></span>
+
+                    <div class="price">
+                        <span class="old-price">R$<?= number_format($_product->getPriceOriginal(),2,',','.') ?></span>
+                        <span class="current-price">R$<?= number_format($_product->getPrice(),2,',','.') ?></span>
+                    </div>
+
+                    <a target="_blank" href="<?= $_product->getProductUrl() ?>"><button type="button">Ver Produto</button></a>
+                </div>
+            </div>
+        </div>
+        
+        <button type="button" onclick="popup_close(this)">Fechar</button>
+
+    </div>
+    <?php
+        }
+    ?>
+</div>
+<?php
+    }
+}
+?>

@@ -1,0 +1,11 @@
+<?php
+
+$host = urlencode($block->getHost());
+$email = urlencode($block->getUserEmail());
+
+?>
+
+<div id="iframe-container">
+    <iframe src="https://www.trustedsite.com/signup?aff=265987&platform=6&source=magento&partner=magento&email=<?= $block->escapeUrl($email) ?>&host=<?= $block->escapeUrl($host) ?>" width="100%" height="1000px" frameborder="0" style="text-align:center; border:solid 1px #e6e7e8; overflow:scroll;" sandbox="allow-same-origin allow-scripts allow-forms">
+    </iframe>
+</div>

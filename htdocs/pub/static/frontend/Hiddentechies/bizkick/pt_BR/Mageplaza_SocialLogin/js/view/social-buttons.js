@@ -1,0 +1,1 @@
+/var/www/html/app/code/Mageplaza/SocialLogin/view/frontend/web/js/view/social-buttons.js

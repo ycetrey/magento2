@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="etatvasoft" translate="label" sortOrder="500">
+            <label>Etatvasoft Extensions</label>
+        </tab>
+        <section id="wa_chat" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>WhatsApp Chat</label>
+            <tab>wscustom</tab>
+            <resource>Etatvasoft_WhatsAppChat::wa_chat</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="enable" translate="label comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Enable WhatsApp Chat</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="phone_number" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>WhatsApp Number</label>
+                    <comment>Phone number with country code and in format e.g. +9195xxxxxxxx</comment>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="message" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Message</label>
+                    <comment>Pre-filled message that will automatically appear in the text field of a chat</comment>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="whatsapp_icon" translate="label" type="Magento\Config\Block\System\Config\Form\Field\Image" sortOrder="4" showInDefault="1" showInWebsite="1" >
+                    <label>WhatsApp Chat Image</label>
+                    <comment>WhatsApp Chat Image to be shown on frontend</comment>
+                    <backend_model>Magento\Config\Model\Config\Backend\Image</backend_model>
+                    <upload_dir config="system" scope_info="1">whatsapp_icon</upload_dir>
+                    <base_url type="media" scope_info="1">whatsapp_icon</base_url>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+                <field id="position" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>WhatsApp Chat Image Position</label>
+                    <comment>WhatsApp Chat Image position to be shown on frontend</comment>
+                    <source_model>Etatvasoft\WhatsAppChat\Model\Config\Source\Position</source_model>
+                    <depends>
+                        <field id="status">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

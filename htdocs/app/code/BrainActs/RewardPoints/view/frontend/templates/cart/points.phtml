@@ -1,0 +1,51 @@
+<?php
+/**
+ * Copyright (c) 2018 BrainActs Commerce OÜ, All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php
+/** @var \BrainActs\RewardPoints\Block\Cart\Points $block */
+?>
+
+<?php if ($block->isVisible()):?>
+<div class="block reward-points" id="block-reward-points" data-mage-init='{"collapsible":{"openedState": "active", "saveState": false}}'>
+    <div class="title" data-role="title">
+        <strong id="block-reward-points-heading" role="heading" aria-level="2"><?php /* @escapeNotVerified */ echo __('Reward Points') ?></strong>
+    </div>
+    <div class="content" data-role="content" aria-labelledby="block-reward-points-heading">
+        <p><?php /* @escapeNotVerified */ echo __('You have %1 points.', $block->getCustomerPoints())  ?> (<?php /* @escapeNotVerified */ echo $block->getMoney()?>)</p>
+
+        <form id="reward-points-form"
+              action="<?php /* @escapeNotVerified */ echo $block->getUrl('points/cart/apply') ?>"
+              method="post"
+              data-mage-init='{"rewardPoints":{"rewardPointSelector": "#reward_point_manually",
+                                               "applyButton": "#reward-points-form button.action.apply",
+                                               "points":"<?php echo $block->getCustomerPoints()?>",
+                                               "maxPoints":<?php echo $block->getMaxPoints()?>,
+                                               "selectedPoints":<?php echo $block->getSelectedPoints()?>}}'>
+
+            <div class="">
+                <div id="reward-slider"></div>
+            </div>
+            <br />
+            <div class="fieldset coupon">
+                <div class="field">
+                    <label for="reward_point_manually" class="label"><span><?php /* @escapeNotVerified */ echo __('Enter Points to Spend') ?></span></label>
+                    <div class="control">
+                        <input type="text" class="input-text" id="reward_point_manually" name="reward_point_manually" value="<?php echo $block->escapeHtml($block->getCouponCode()) ?>" placeholder="<?php echo $block->escapeHtml(__('Enter Points to Spend'));?>" />
+                    </div>
+                </div>
+                <div class="actions-toolbar">
+                    <div class="primary">
+                        <button class="action apply primary" type="button" value="<?php /* @escapeNotVerified */ echo __('Apply Points') ?>">
+                            <span><?php /* @escapeNotVerified */ echo __('Apply Points') ?></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<?php endif;?>
+

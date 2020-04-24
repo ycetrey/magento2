@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2018 BrainActs Commerce OÜ, All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Sales:etc/sales.xsd">
+    <section name="quote">
+        <group name="totals">
+            <item name="reward_points" instance="BrainActs\RewardPoints\Model\Quote\Total\Points" sort_order="20" />
+        </group>
+    </section>
+    <section name="order_invoice">
+        <group name="totals">
+            <item name="reward_points" instance="BrainActs\RewardPoints\Model\Order\Invoice\Total\Points" sort_order="600"/>
+        </group>
+    </section>
+</config>

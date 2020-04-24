@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+	<head>
+        <title>Gerenciar Sugestões de Preço</title>
+		<script src="Wealthsystems_Masterbargain::js/js.js"/>
+		<css src="Wealthsystems_Masterbargain::css/css.css"/>
+        <!-- 
+		demo
+		<css src="jquery/fileUploader/css/jquery.fileupload-ui.css"/>
+		<script src="path/file.js" defer="defer"/>
+		<link src="http://url.com" src_type="url"/>
+		<remove src="path/remove/file.css"/>
+		-->
+    </head> 
+	<body>
+        <referenceContainer name="content">
+            <block class="Wealthsystems\Masterbargain\Block\Adminhtml\Index\Price" name="masterbargain_block_adminhtml_index_price"  template="Wealthsystems_Masterbargain::masterbargain_index_price.phtml" />
+        </referenceContainer>
+    </body>
+</page>

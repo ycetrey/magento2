@@ -1,0 +1,23 @@
+{
+    "name": "mageme/module-hideprice",
+    "version": "1.0.1",
+    "description": "Hide product prices from anonymous users. Replace price with custom html text or button with custom alert message.",
+    "type": "magento2-module",
+    "license": "https://mageme.com/license/",
+    "authors": [
+        {
+            "email": "support@mageme.com",
+            "name": "Mageme.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "MagemeCom\\HidePrice\\": ""
+        }
+    }
+}

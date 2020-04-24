@@ -1,0 +1,147 @@
+<div class="container">
+
+    <div data-role="spinner" data-component="notification_area.notification_area.columns" class="admin__data-grid-loading-mask wstheme-loading">
+        <div class="spinner">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+    <div class="message-save">
+        <div class="save-success">
+            <span>Registrado com sucesso!</span>
+        </div>
+    </div>
+
+    <div><input name="form_key" type="hidden" value="<?= $this->getFormKey() ?>"></div>
+
+    <div class="more-views-bargain">
+        <button type="button">Ver Todos</button>
+
+        <div class="bargain-filter">
+            <div class="field">
+                <label>De:</label>
+                <input id="bargain-start" type="date" value="">
+            </div>
+            <div class="field">
+                <label>Até:</label>
+                <input id="bargain-end" type="date" value="">
+            </div>
+            <div class="field">
+                <label> </label>
+                <button onclick="filter()" type="button">Carregar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="list-item">
+        <div class="table-bargain">
+            <div class="item-bargain">
+                <div class="item-id">
+                    <span>ID</span>
+                </div>
+                <div class="item-product">
+                    <span>Produto</span>
+                </div>
+                <div class="item-price">
+                    <span>Preço</span>
+                </div>
+                <div class="item-customer">
+                    <span>Cliente</span>
+                </div>
+                <div class="item-date">                            
+                    <span>Data</span>
+                </div>
+                <div class="item-status">
+                    <span></span>
+                </div>
+            </div>
+
+            <?php
+            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();      
+            $prices = $block->getPrices()->getCollection()->addFieldToFilter('status',0);
+
+            if (count($prices)) {
+                foreach ($prices as $_price) {
+                    $_customer = $objectManager->create('Magento\Customer\Model\Customer')->load($_price->getCustomerId());
+                    $_product = $objectManager->get('Magento\Catalog\Model\Product')->load($_price->getProductId());
+
+                    $datetime = new DateTime($_price->getDate(), new DateTimeZone('America/Sao_Paulo'));
+
+                    $datetime->setTimezone(new DateTimeZone('America/Sao_Paulo'));
+                    ?>
+                    <div class="item-bargain" id="bargain-<?= $_price->getId() ?>">
+                        <div class="item-id">
+                            <span><?= $_price->getId() ?></span>
+                        </div>
+                        <div class="item-product" title="ID: <?= $_price->getProductId() ?>">
+                            <span><?= $_product->getName() ?></span>
+                        </div>
+                        <div class="item-price">
+                            <span>R$ <?= number_format($_price->getPrice(), 2, ',', '.') ?></span>
+                        </div>
+                        <div class="item-customer" title="ID: <?= $_price->getCustomerId() ?>">
+                            <span><?= $_customer->getName() ?></span>
+                        </div>
+                        <div class="item-date">                            
+                            <span><?= $datetime->format('d/m/Y H:i:s') ?></span>
+                        </div>
+                        <div class="item-status">
+                            <select class="status-<?= $_price->getId() ?>">
+                                <option value="1">Aprovar</option>
+                                <option value="2">Não Aprovar</option>
+                            </select>
+                            <button onclick="changeStatus('<?= $_price->getId() ?>',this)" type="button" class="save">Salvar</button>
+                        </div>
+                    </div>
+                    <?php
+                }
+            }
+            ?>      
+        </div> 
+    </div>
+
+    <?php
+    $storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+    ?>
+
+    <script>
+        function changeStatus(id,e) 
+        {        
+            jQuery('.wstheme-loading').show();   
+            var status = jQuery('.status-'+id).val();    
+
+            if(status == 1){
+                jQuery(e).css('background','#8cc125');
+            } else {
+                jQuery(e).css('background','#e22626');
+            }
+            
+            jQuery.post("<?= $storeManager->getStore()->getBaseUrl() ?>masterbargain/index/priceapproves", {
+                    id: id, status: status
+                },
+                function(data) {
+                    jQuery('.message-save').show();
+                    jQuery('.wstheme-loading').hide();
+                    setTimeout(function() {
+                        jQuery('.message-save').hide();
+                    }, 3500);
+                }
+            )            
+        }
+
+        function filter() 
+        {        
+            jQuery('.wstheme-loading').show();
+
+            var date_start = jQuery('#bargain-start').val();
+            var date_end = jQuery('#bargain-end').val();
+            
+            jQuery.post("<?= $storeManager->getStore()->getBaseUrl() ?>masterbargain/index/pricefilter", {
+                    date_start: date_start, date_end: date_end
+                },
+                function(data) {
+                    jQuery('.table-bargain').html(data);   
+                    jQuery('.wstheme-loading').hide();                 
+                }
+            )            
+        }
+    </script>

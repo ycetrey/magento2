@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2018 BrainActs Commerce OÜ, All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_register_success">
+        <observer name="reward_points_register" instance="BrainActs\RewardPoints\Observer\Rule\CustomerRegisterSuccess" />
+        <observer name="reward_points_register_message" instance="BrainActs\RewardPoints\Observer\Message\AfterCreateCustomerAccount" />
+    </event>
+    <event name="wishlist_share">
+        <observer name="reward_points_wishlist_share" instance="BrainActs\RewardPoints\Observer\Rule\WishlistShare" />
+        <observer name="reward_points_wishlist_share_message" instance="BrainActs\RewardPoints\Observer\Message\AfterShareWishList" />
+    </event>
+
+
+    <event name="controller_action_predispatch_customer_account_create">
+        <observer name="rw_controller_action_predispatch_customer_account_create"
+                  instance="BrainActs\RewardPoints\Observer\Message\BeforeCreateCustomerAccount" />
+    </event>
+
+    <event name="controller_action_predispatch_wishlist_index_share">
+        <observer name="rw_controller_action_predispatch_wishlist_index_share"
+                  instance="BrainActs\RewardPoints\Observer\Message\BeforeShareWishList" />
+    </event>
+
+
+
+
+
+
+</config>

@@ -1,0 +1,15 @@
+<?php
+    $attachmentList = $block->getAttachments();
+    $mediaPath = $block->getAttachmentMediaPath()."productsattachment/";
+    $count =  $attachmentList->getSize();
+?>
+<?php if ($count > 0) : ?>
+    <ul class="footer links" style="margin:0px;padding-left: 18px;">
+        <?php foreach ($attachmentList->getData() as $attachment) : ?>
+            <?php if (!empty($attachment['title']) && (!empty($attachment['attach_file']))) : ?>
+                <?php $fileurl = $mediaPath.$attachment['attach_file'] ?>
+                <li><a href="<?php echo __($fileurl); ?>" target="_blank"><?php echo __($attachment['title']); ?></a></li>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>

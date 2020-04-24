@@ -1,0 +1,1 @@
+"Fatal Error: 'Allowed memory size of 134217728 bytes exhausted (tried to allocate 876544 bytes)' in '\/home\/bruno\/Documentos\/B2B\/terex2\/htdocs\/vendor\/magento\/framework\/DB\/Statement\/Pdo\/Mysql.php' on line 91"

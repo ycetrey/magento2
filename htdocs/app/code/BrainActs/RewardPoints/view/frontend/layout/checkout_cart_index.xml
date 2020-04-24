@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2018 BrainActs Commerce OÜ, All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="checkout.cart.totals">
+            <arguments>
+                <argument name="jsLayout" xsi:type="array">
+                    <item name="components" xsi:type="array">
+                        <item name="block-totals" xsi:type="array">
+                            <item name="children" xsi:type="array">
+                                <item name="reward_points" xsi:type="array">
+                                    <item name="component"  xsi:type="string">BrainActs_RewardPoints/js/view/checkout/summary/reward-points</item>
+                                    <item name="sortOrder" xsi:type="string">20</item>
+                                    <item name="config" xsi:type="array">
+                                        <item name="reward_points" xsi:type="string" translate="true">Spend Reward Points</item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="BrainActs\RewardPoints\Block\Cart\Points" name="reward.cart.points" as="reward.points" after="coupon" template="BrainActs_RewardPoints::cart/points.phtml"/>
+        </referenceContainer>
+        <move element="reward.cart.points" destination="cart.discount" />
+    </body>
+</page>

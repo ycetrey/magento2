@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2018 BrainActs Commerce OÜ, All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="customer_account_navigation">
+            <block class="Magento\Framework\View\Element\Html\Link\Current" ifconfig="brainacts_reward_points/general/enabled" name="customer-account-navigation-points-link">
+                <arguments>
+                    <argument name="path" xsi:type="string">points/history</argument>
+                    <argument name="label" xsi:type="string">Reward Points History</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

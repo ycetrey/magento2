@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Core
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="wsprice" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Gerenciamento de Preço</label>
+            <tab>wscustom</tab>
+            <resource>Mageplaza_Core::configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+
+                <comment>
+                    <![CDATA[ <div style="background: #103958; border: none; border-radius: 3px">
+                    <div style="padding:15px;text-align: center; vertical-align:bottom;">
+                    <a href="http://wssim.com.br/" target="_blank">
+                    <img src="https://mastercenter.ws/wp-content/uploads/2019/04/marcas-master.png" style="margin: auto; width: 200px;" />
+                    </a>
+                    </div>
+                    <div class="clear"></div>
+                    </div> ]]>
+                </comment>
+
+                <label>General Management</label>
+                <field id="enable_price" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Price Table</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable product pricing by table prices</comment>
+                </field>
+                <field id="enable_discount" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Discount Table</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable product discount by table discounts</comment>
+                </field>
+                <field id="enable_tax" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Tax Table</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable product tax by table taxes</comment>
+                </field>
+            </group>
+            <group id="pricetable" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Price Table Options</label>
+                <field id="defaulttable" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Default Price Table</label>
+                    <source_model>Wealthsystems\Masterprice\Model\Config\Custom\Tables</source_model>
+                    <comment>Set a default product table price</comment>
+                </field>               
+            </group>
+            <group id="discounttable" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Discount Table Options</label>
+                <field id="discounttag" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Discount Tag</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable to show discount label on product card</comment>
+                </field>               
+            </group>
+            <group id="taxtable" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Tax Table Options</label>
+                <field id="taxdetailproduct" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Tax Detail on Product</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Show tax details on product page</comment>
+                </field>    
+                <field id="taxdetailcart" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Tax Detail on Cart</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Show tax details on cart page</comment>
+                </field>             
+            </group>
+        </section>
+    </system>
+</config>

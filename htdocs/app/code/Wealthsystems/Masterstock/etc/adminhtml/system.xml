@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Core
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="wsstock" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Gerenciamento de Estoque</label>
+            <tab>wscustom</tab>
+            <resource>Mageplaza_Core::configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+
+                <comment>
+                    <![CDATA[ <div style="background: #103958; border: none; border-radius: 3px">
+                    <div style="padding:15px;text-align: center; vertical-align:bottom;">
+                    <a href="http://wssim.com.br/" target="_blank">
+                    <img src="https://mastercenter.ws/wp-content/uploads/2019/04/marcas-master.png" style="margin: auto; width: 200px;" />
+                    </a>
+                    </div>
+                    <div class="clear"></div>
+                    </div> ]]>
+                </comment>
+
+                <label>General Management</label>
+                <field id="enable_stock" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Stock Table</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable product quantity by table stock</comment>
+                </field>
+                <field id="enable_movement" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Stock Movement</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable stock movement after purchase</comment>
+                </field>
+                <field id="enable_forecast" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Arrival Forecast</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Show arrival forecast on product page</comment>
+                </field>     
+                <field id="enable_warehouse" translate="label comment" type="select" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Warehouse</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable warehouse filter into stock</comment>
+                </field>     
+                <field id="low_stock" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Low Stock</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Value to set and show low stock</comment>
+                </field>    
+            </group>            
+        </section>
+    </system>
+</config>

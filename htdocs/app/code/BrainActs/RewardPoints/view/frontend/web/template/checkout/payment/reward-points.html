@@ -1,0 +1,50 @@
+<!--
+  ~ Copyright (c) 2018 BrainActs Commerce OÜ, All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+<!-- ko if: isVisible -->
+<div class="payment-option _collapsible opc-payment-additional reward-points"
+     data-bind="mageInit: {'collapsible':{'openedState': '_active'}}">
+    <div class="payment-option-title field choice" data-role="title">
+        <span class="action action-toggle" id="block-discount-heading" role="heading" aria-level="2">
+            <!-- ko i18n: 'Reward Points'--><!-- /ko -->
+        </span>
+    </div>
+    <div class="payment-option-content" data-role="content">
+        <!-- ko foreach: getRegion('messages') -->
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <!--/ko-->
+        <p data-bind="text: getCurrentPointsText()"></p>
+        <form class="form form-discount" id="reward-points-form">
+            <div class="" afterRender="initSlider">
+                <div id="reward-slider"></div>
+            </div>
+            <br />
+
+            <div class="payment-option-inner">
+                <div class="field">
+                    <label class="label" for="reward-points">
+                        <span data-bind="i18n: 'Enter Points to Spend'"></span>
+                    </label>
+                    <div class="control">
+                        <input class="input-text"
+                               type="text"
+                               id="reward-points"
+                               name="reward_points"
+                               data-validate="{'required-entry':true}"
+                               data-bind="value: rewardPoints, attr:{placeholder: $t('Enter Points to Spend')} " />
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button class="action action-apply" type="submit" data-bind="'value': $t('Apply Reward Points'), click: apply">
+                        <span><!-- ko i18n: 'Apply Reward Points'--><!-- /ko --></span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /ko -->

@@ -1,0 +1,132 @@
+<style>
+    .bargain {
+        display: block;
+        width: 100%;
+        padding: 20px 0;
+        border-top: 1px solid #e5e5e5;
+    }
+
+    .bargain button {
+        background: #3e907b;
+        color: #ffffff;
+        padding: 11px 15px;
+        border: none;
+        margin-left: 5px;
+    }
+
+    .bargain input {
+        border: 1px solid #d2d2d2;
+    }
+
+    .bargain .description .title {
+        color: #1a8874;
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+    }
+
+    .bargain .description .subtitle {
+        color: #666666;
+        line-height: 24px;
+        margin: -3px 0 5px 0;
+        display: block;
+    }
+
+    .bargain .proposal {
+        display: flex;
+    }
+
+    .bargain .vl {
+        width: 150px;
+    }
+
+    .bargain-response {
+        font-style: italic;
+        font-size: 13px;
+        color: #666;
+        padding: 5px 0;
+    }
+</style>
+
+<?php
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->create('Magento\Customer\Model\Session');
+if ($customerSession->isLoggedIn()) {
+    ?>
+    <script>
+        function sendBargain() {
+            jQuery('.proposal').find('.bt').find('button').html('Enviando <i class="fa fa-spinner fa-pulse fa-fw"></i>');
+
+            var product_id = '<?= $block->getProduct()->getId() ?>';
+            var customer_id = '<?= $customerSession->getCustomer()->getId() ?>';
+            var old_price = '<?= $block->getProduct()->getPrice() ?>';
+            var new_price = jQuery('#bargain-price').val();
+
+            jQuery.post("<?= $block->getUrl("masterbargain/index/pricesave"); ?>", {
+                    product_id: product_id,
+                    customer_id: customer_id,
+                    new_price: new_price
+                },
+                function(data) {
+                    jQuery('#bargain-price').css('border', '1px solid #3a8976');
+                    jQuery('#bargain-price').prop("disabled", true);
+                    jQuery('#bargain-price').prop('type', 'text');
+                    jQuery('#bargain-price').val('R$ ' + new_price);
+                    jQuery('.proposal').find('.bt').html('<i style="font-size:18px;margin-top:9px;margin-left:10px;color:#3a8976;" class="fa fa-check" aria-hidden="true"></i>');
+                
+                    location.reload();
+                }
+            )
+        }
+    </script>
+
+    <div class="bargain">
+        <?php
+            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+            $bargain_product = $objectManager->create('\Wealthsystems\Masterbargain\Model\Bargain');
+            $bargain_product = $bargain_product->getCollection()
+                ->addFieldToFilter('product_id', $block->getProduct()->getId())
+                ->addFieldToFilter('customer_id', $customerSession->getCustomer()->getId())
+                ->getLastItem();
+
+            if (!$block->getProduct()->getIsBargain()) {
+                ?>
+            <div class="description">
+                <span class="title">Quanto você deseja pagar?</span>
+                <span class="subtitle">Faça sua proposta e aguarde a aprovação do novo valor.</span>
+            </div>
+
+            <div class="proposal">
+                <div class="vl">
+                    <input id="bargain-price" type="number" value="" min="0" placeholder="R$ <?= number_format($block->getProduct()->getPrice(), 2, ',', '.') ?>">
+                </div>
+                <div class="bt">
+                    <button type="button" onclick="sendBargain()">Enviar proposta</button>
+                </div>
+            </div>
+
+            <div class="bargain-response">
+                <?php if ($bargain_product->getId() && $bargain_product->getStatus() == 0) { ?>
+                    <span>O Valor de R$<?= number_format($bargain_product->getPrice(), 2, ',', '.') ?> ainda não foi aprovado. Você pode enviar outra proposta para substituí-la.</span>
+                <?php } else if ($bargain_product->getId() && $bargain_product->getStatus() == 2) { ?>
+                    <span>O Valor de R$<?= number_format($bargain_product->getPrice(), 2, ',', '.') ?> não foi aprovado. Você pode enviar outra proposta.</span>
+                <?php }  ?>
+            </div>
+
+        <?php
+            } else {
+                ?>
+            <div class="description">
+                <span class="title">Preço Aprovado</span>
+                <span class="subtitle">O preço que você desejava (<b>R$ <?= number_format($block->getProduct()->getPrice(), 2, ',', '.') ?></b>) foi aprovado. Você já pode comprar adicionando no carrinho.</span>
+            </div>
+        <?php
+            }
+            ?>
+    </div>
+
+<?php
+}
+?>

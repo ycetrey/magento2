@@ -1,0 +1,18 @@
+
+<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('home-contactus-block')->toHtml(); ?>
+
+<script>
+require(['jquery'], function() {       
+    jQuery( window ).load(function() {
+        setTimeout(function(){  
+            jQuery('.nav-toggle').click(function() {
+                jQuery('.nav-sections').toggleClass('nav-visible');
+            });
+
+            jQuery('.nav-sections').mouseleave(function (e){
+                jQuery(this).removeClass('nav-visible');
+            }); 
+        }, 700);
+    });
+});
+</script>

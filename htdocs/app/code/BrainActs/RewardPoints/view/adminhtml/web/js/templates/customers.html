@@ -1,0 +1,17 @@
+<!--
+  ~ Copyright (c) 2018 BrainActs Commerce OÜ, All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+<% if (data.length) { %>
+<div>
+    <ul>
+    <% _.each(data, function(customer) { %>
+    <li data-id="<%- customer.entity_id %>">
+        <%- customer.firstname %> <%- customer.lastname %>
+    </li>
+    <% }); %>
+    </ul>
+</div>
+<% } else { %>
+<p class="no-items-found"><%- window.jQuery.mage.__('No customers found.') %></p>
+<% } %>

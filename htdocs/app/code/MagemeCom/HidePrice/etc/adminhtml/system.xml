@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+
+        <tab id="magemecom" translate="label" sortOrder="500">
+            <label>MageMe.com</label>
+        </tab>
+
+        <section id="hideprice" translate="text" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+
+            <label>Visualização de Preço</label>
+            <tab>wscustom</tab>
+
+            <resource>MagemeCom_HidePrice::configuration</resource>
+
+            <group id="information" translate="label" type="label" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Information</label>
+                <field id="version" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>Hide Price Free</label>
+                    <frontend_model>MagemeCom\HidePrice\Block\Adminhtml\Info\Version</frontend_model>
+                </field>
+                <field id="links" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0"
+                       showInStore="0">
+                    <label>Extension links</label>
+                    <frontend_model>MagemeCom\HidePrice\Block\Adminhtml\Info\Links</frontend_model>
+                </field>
+            </group>
+
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Configuration</label>
+
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable HidePrice</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <field id="replace_element" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Replace price with</label>
+                    <comment>Replace price with the selected element</comment>
+                    <source_model>MagemeCom\HidePrice\Model\Config\Source\Type</source_model>
+                </field>
+
+                <field id="text" translate="label" type="textarea" sortOrder="17" showInDefault="2" showInWebsite="1" showInStore="1">
+                    <label>Text</label>
+                    <comment>This text will display instead of price.</comment>
+                    <depends>
+                        <field id="replace_element">text</field>
+                    </depends>
+                </field>
+
+                <field id="button_text" translate="label" type="text" sortOrder="19" showInDefault="2" showInWebsite="1" showInStore="1">
+                    <label>Button text</label>
+                    <comment>This text will display instead of price. (Default: 'Click for info')</comment>
+                    <depends>
+                        <field id="replace_element">button_with_alert</field>
+                    </depends>
+                </field>
+
+                <field id="alert_icon" translate="label" type="select" sortOrder="20" showInDefault="2" showInWebsite="1" showInStore="1">
+                    <label>Alert icon</label>
+                    <comment>This icon will be displayed on the popup. (Default: 'Info')</comment>
+                    <source_model>MagemeCom\HidePrice\Model\Config\Source\Alert\Icon</source_model>
+                    <depends>
+                        <field id="replace_element">button_with_alert</field>
+                    </depends>
+                </field>
+
+                <field id="alert_title_text" translate="label" type="text" sortOrder="21" showInDefault="2" showInWebsite="1" showInStore="1">
+                    <label>Alert title text</label>
+                    <comment>This title will displayed inside popup. (Default: 'Info')</comment>
+                    <depends>
+                        <field id="replace_element">button_with_alert</field>
+                    </depends>
+                </field>
+
+                <field id="alert_text" translate="label" type="textarea" sortOrder="22" showInDefault="2" showInWebsite="1" showInStore="1">
+                    <label>Alert text</label>
+                    <comment>This text will displayed inside popup. (Default: 'MagemeCom HidePrice')</comment>
+                    <depends>
+                        <field id="replace_element">button_with_alert</field>
+                    </depends>
+                </field>
+
+                <field id="alert_button_text" translate="label" type="text" sortOrder="23" showInDefault="2" showInWebsite="1" showInStore="1">
+                    <label>Alert button text</label>
+                    <comment>This text will be displayed on button inside popup. (Default: 'Close')</comment>
+                    <depends>
+                        <field id="replace_element">button_with_alert</field>
+                    </depends>
+                </field>
+
+                <field id="show_for_logged_in" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Show price for logged in users</label>
+                    <comment>Show price for authenticated users.</comment>
+
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+
+            </group>
+        </section>
+
+    </system>
+</config>

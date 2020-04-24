@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2018 BrainActs Commerce OÜ, All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="BrainActs\RewardPoints\Api\Data\RuleEarningInterface" type="BrainActs\RewardPoints\Model\Rule\Earning" />
+    <preference for="BrainActs\RewardPoints\Api\Data\RuleSpendInterface" type="BrainActs\RewardPoints\Model\Rule\Spend" />
+    <preference for="BrainActs\RewardPoints\Api\Data\HistoryInterface" type="BrainActs\RewardPoints\Model\History" />
+    <preference for="BrainActs\RewardPoints\Api\PointsManagementInterface" type="BrainActs\RewardPoints\Model\PointsManagement" />
+
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="BrainActs\RewardPoints\Api\Data\RuleEarningInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">brainacts_points_rule_earning</item>
+                    <item name="identifierField" xsi:type="string">earning_rule_id</item>
+                </item>
+
+                <item name="BrainActs\RewardPoints\Api\Data\RuleSpendInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">brainacts_points_rule_spend</item>
+                    <item name="identifierField" xsi:type="string">spend_rule_id</item>
+                </item>
+
+                <item name="BrainActs\RewardPoints\Api\Data\HistoryInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="string">brainacts_points_history</item>
+                    <item name="identifierField" xsi:type="string">history_id</item>
+                </item>
+
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\EntityManager\Operation\AttributePool">
+        <arguments>
+            <argument name="extensionActions" xsi:type="array">
+                <item name="rewardPoints" xsi:type="array">
+                    <item name="BrainActs\RewardPoints\Api\Data\RuleEarningInterface" xsi:type="array">
+                        <item name="read" xsi:type="string">BrainActs\RewardPoints\Model\ResourceModel\Rule\Earning\Relation\ReadHandler</item>
+                        <item name="create" xsi:type="string">BrainActs\RewardPoints\Model\ResourceModel\Rule\Earning\Relation\SaveHandler</item>
+                        <item name="update" xsi:type="string">BrainActs\RewardPoints\Model\ResourceModel\Rule\Earning\Relation\SaveHandler</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="BrainActs\RewardPoints\Model\ResourceModel\Rule\AssociatedEntityMap" type="Magento\Framework\DataObject">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="website" xsi:type="array">
+                    <item name="associations_table" xsi:type="string">brainacts_points_rule_earning_website</item>
+                    <item name="rule_id_field" xsi:type="string">earning_rule_id</item>
+                    <item name="entity_id_field" xsi:type="string">website_id</item>
+                </item>
+                <item name="customer_group" xsi:type="array">
+                    <item name="associations_table" xsi:type="string">brainacts_points_rule_earning_customer_group</item>
+                    <item name="rule_id_field" xsi:type="string">earning_rule_id</item>
+                    <item name="entity_id_field" xsi:type="string">customer_group_id</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\EntityManager\HydratorPool">
+        <arguments>
+            <argument name="hydrators" xsi:type="array">
+                <item name="BrainActs\RewardPoints\Api\Data\RuleEarningInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
+                <item name="BrainActs\RewardPoints\Api\Data\RuleSpendInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
+                <item name="BrainActs\RewardPoints\Api\Data\HistoryInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
+            </argument>
+        </arguments>
+    </type>
+
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="points_history_listing_data_source" xsi:type="string">BrainActs\RewardPoints\Model\ResourceModel\History\Grid\Collection</item>
+                <item name="points_spend_listing_data_source" xsi:type="string">BrainActs\RewardPoints\Model\ResourceModel\Rule\Spend\Grid\Collection</item>
+                <item name="points_earning_listing_data_source" xsi:type="string">BrainActs\RewardPoints\Model\ResourceModel\Rule\Earning\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="BrainActs\RewardPoints\Model\ResourceModel\Rule\Earning\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">brainacts_points_rule_earning</argument>
+            <argument name="eventPrefix" xsi:type="string">points_rule_earning_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">points_rule_earning_collection</argument>
+            <argument name="resourceModel" xsi:type="string">BrainActs\RewardPoints\Model\ResourceModel\Rule\Earning</argument>
+        </arguments>
+    </type>
+
+    <type name="BrainActs\RewardPoints\Model\ResourceModel\Rule\Spend\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">brainacts_points_rule_spend</argument>
+            <argument name="eventPrefix" xsi:type="string">points_rule_spend_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">points_rule_spend_collection</argument>
+            <argument name="resourceModel" xsi:type="string">BrainActs\RewardPoints\Model\ResourceModel\Rule\Spend</argument>
+        </arguments>
+    </type>
+
+    <type name="BrainActs\RewardPoints\Model\ResourceModel\History\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">brainacts_points_history</argument>
+            <argument name="eventPrefix" xsi:type="string">points_history_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">points_history_collection</argument>
+            <argument name="resourceModel" xsi:type="string">BrainActs\RewardPoints\Model\ResourceModel\History</argument>
+        </arguments>
+    </type>
+
+    <type name="BrainActs\RewardPoints\Controller\AbstractIndex">
+        <plugin name="authentication" type="\BrainActs\RewardPoints\Controller\Plugin" sortOrder="10"/>
+    </type>
+
+</config>

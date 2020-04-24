@@ -1,0 +1,66 @@
+<?php
+    $infoCustomer = 'form_additional_info_customer_edit';
+    $blockName = $this->getNameInLayout();
+
+    if($infoCustomer == $blockName){
+        $blockData = $block->getCustomer();
+    } else {
+        $blockData = $block->getFormData();
+    }
+?>
+
+<?php $_legalType = $block->getLayout()->createBlock('Techspot\Brcustomer\Block\Widget\Legaltype') ?>
+<?php if ($_legalType->isEnabled()): ?>
+    <?= $_legalType->setLegalType($_legalType->getCustomAttribute($this, $block, 'legal_type'))->toHtml() ?>
+<?php endif ?>
+
+<?php $_taxvat = $block->getLayout()->createBlock('Magento\Customer\Block\Widget\Taxvat') ?>
+<?php if ($_taxvat->isEnabled()): ?>    
+    <?= $_taxvat->setTaxvat($blockData->getTaxvat())->toHtml() ?>
+<?php endif ?>
+
+<?php $_document = $block->getLayout()->createBlock('Techspot\Brcustomer\Block\Widget\Document') ?>
+<?php if ($_document->isEnabled()): ?>
+    <?= $_document->setDocument($_document->getCustomAttribute($this, $block, 'document'))->toHtml() ?>
+<?php endif ?>
+
+<?php $_documentEmitter = $block->getLayout()->createBlock('Techspot\Brcustomer\Block\Widget\Documentemitter') ?>
+<?php if ($_documentEmitter->isEnabled()): ?>
+    <?= $_documentEmitter->setDocumentEmitter($_documentEmitter->getCustomAttribute($this, $block, 'document_emitter'))->toHtml() ?>
+<?php endif ?>
+
+<?php $_stateInscription = $block->getLayout()->createBlock('Techspot\Brcustomer\Block\Widget\Stateinscription') ?>
+<?php if ($_stateInscription->isEnabled()): ?>
+    <?= $_stateInscription->setStateInscription($_stateInscription->getCustomAttribute($this, $block, 'state_inscription'))->toHtml() ?>
+<?php endif ?>
+
+<?php $_countyInscription = $block->getLayout()->createBlock('Techspot\Brcustomer\Block\Widget\Countyinscription') ?>
+<?php if ($_countyInscription->isEnabled()): ?>
+    <?= $_countyInscription->setCountyInscription($_countyInscription->getCustomAttribute($this, $block, 'county_inscription'))->toHtml() ?>
+<?php endif ?>
+
+<?php $_stateInscription = $block->getLayout()->createBlock('Techspot\Brcustomer\Block\Widget\Stateinscription') ?>
+<?php if ($_stateInscription->isEnabled()): ?>
+    <?= $_stateInscription->setStateInscription($_stateInscription->getCustomAttribute($this, $block, 'state_inscription'))->toHtml() ?>
+<?php endif ?>
+
+<?php $_cellphone = $block->getLayout()->createBlock('Techspot\Brcustomer\Block\Widget\Cellphone') ?>
+<?php if ($_cellphone->isEnabled()): ?>
+    <?= $_cellphone->setCustomCellphone($_cellphone->getCustomAttribute($this, $block, 'custom_cellphone'))->toHtml() ?>
+<?php endif ?>
+
+<?php $_telephone = $block->getLayout()->createBlock('Techspot\Brcustomer\Block\Widget\Telephone') ?>
+<?php if ($_telephone->isEnabled()): ?>
+    <?= $_telephone->setCustomTelephone($_telephone->getCustomAttribute($this, $block, 'custom_telephone'))->toHtml() ?>
+<?php endif ?>
+
+<script type="text/javascript">
+require([
+    'jquery',
+    'brcustomer',
+    'pessoaFisica',
+    "pessoaJuridica",
+    'domReady!'
+], function($){
+});
+</script>

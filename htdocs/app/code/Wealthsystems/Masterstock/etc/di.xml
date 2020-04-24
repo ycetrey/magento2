@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\InventorySales\Model\IsProductSalableForRequestedQtyCondition\IsSalableWithReservationsCondition" type="Wealthsystems\Masterstock\Model\Rewrite\IsProductSalableForRequestedQtyCondition\IsSalableWithReservationsCondition" />
+    <preference for="Wealthsystems\Masterstock\Api\Retrieve" type="Wealthsystems\Masterstock\Model\Api\StockRetrieve" />
+    <preference for="Wealthsystems\Masterstock\Api\Fetch" type="Wealthsystems\Masterstock\Model\Api\StockFetch" />
+    <preference for="Wealthsystems\Masterstock\Api\Refresh" type="Wealthsystems\Masterstock\Model\Api\StockRefresh" />
+    <preference for="Wealthsystems\Masterstock\Api\Data\Refresh" type="Wealthsystems\Masterstock\Model\Api\Data\StockRefresh" />
+</config>

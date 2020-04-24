@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <!--
+        <add id="Wealthsystems_Masterbargain::parent" title="WS Bargain" module="Wealthsystems_Masterbargain" sortOrder="100" resource="Wealthsystems_Masterbargain::parent"/>
+        <add id="Wealthsystems_Masterbargain::price" title="Manage Price Bargain" module="Wealthsystems_Masterbargain" sortOrder="10" action="masterbargain/index/price" resource="Wealthsystems_Masterbargain::index" parent="Wealthsystems_Masterbargain::parent"/>
+        -->       
+        <add id="Wealthsystems_Masterb2b::masterbargain" title="Manage Offers" translate="title" module="Wealthsystems_Masterbargain" sortOrder="30" parent="Wealthsystems_Masterb2b::parent" resource="Wealthsystems_Masterb2b::masterbargain"/>
+    	<add id="Wealthsystems_Masterbargain::index" title="Price Bargain" translate="title" module="Wealthsystems_Masterbargain" sortOrder="10" parent="Wealthsystems_Masterb2b::masterbargain" action="masterbargain/index/price" resource="Wealthsystems_Masterbargain::index"/>
+    </menu>
+</config>

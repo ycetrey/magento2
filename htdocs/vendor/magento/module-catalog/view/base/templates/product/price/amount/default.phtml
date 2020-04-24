@@ -1,0 +1,67 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+?>
+
+<?php /** @var \Magento\Framework\Pricing\Render\Amount $block */ ?>
+
+<?php
+$id = explode('-',$block->getPriceId());
+$productid = $id[sizeof($id) - 1];
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();      
+$_product = $objectManager->get('Magento\Catalog\Model\Product')->load($productid);
+if($_product->getIsBargain() && ($_product->getPriceOriginal() > $_product->getPrice())){
+?>
+
+<style>
+    .product-info-main .price-box .price-final_price .price-wrapper .price{
+        color: #1a8874;
+    }
+    .bargain-price{        
+        color: #333333;
+        font-size: 14px;
+        margin-bottom: -2px;
+        display: block;
+    }
+    .product-items .bargain-session{
+        display: none;
+    }
+</style>
+
+<div class="bargain-session">    
+    <div>
+        <span style="font-size: 20px;text-decoration: line-through;" class="old-price">R$<?= number_format($_product->getPriceOriginal(),2,',','.') ?></span>
+    </div>
+    <div>
+        <span class="bargain-price">Somente para você:</span>
+    </div>
+</div>
+<?php
+}
+?>
+
+<span class="price-container <?= /* @escapeNotVerified */ $block->getAdjustmentCssClasses() ?>"
+        <?= $block->getSchema() ? ' itemprop="offers" itemscope itemtype="http://schema.org/Offer"' : '' ?>>
+    <?php if ($block->getDisplayLabel()): ?>
+        <span class="price-label"><?= /* @escapeNotVerified */ $block->getDisplayLabel() ?></span>
+    <?php endif; ?>
+    <span <?php if ($block->getPriceId()): ?> id="<?= /* @escapeNotVerified */ $block->getPriceId() ?>"<?php endif;?>
+        <?= ($block->getPriceDisplayLabel()) ? 'data-label="' . $block->getPriceDisplayLabel() . $block->getPriceDisplayInclExclTaxes() . '"' : '' ?>
+        data-price-amount="<?= /* @escapeNotVerified */ $block->getDisplayValue() ?>"
+        data-price-type="<?= /* @escapeNotVerified */ $block->getPriceType() ?>"
+        class="price-wrapper <?= /* @escapeNotVerified */ $block->getPriceWrapperCss() ?>"
+    ><?= /* @escapeNotVerified */ $block->formatCurrency($block->getDisplayValue(), (bool)$block->getIncludeContainer()) ?></span>
+    <?php if ($block->hasAdjustmentsHtml()): ?>
+        <?= $block->getAdjustmentsHtml() ?>
+    <?php endif; ?>
+    <?php if ($block->getSchema()): ?>
+        <meta itemprop="price" content="<?= /* @escapeNotVerified */ $block->getDisplayValue() ?>" />
+        <meta itemprop="priceCurrency" content="<?= /* @escapeNotVerified */ $block->getDisplayCurrencyCode() ?>" />
+    <?php endif; ?>
+</span>

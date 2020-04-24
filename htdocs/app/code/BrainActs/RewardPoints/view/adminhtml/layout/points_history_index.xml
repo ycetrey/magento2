@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright (c) 2018 BrainActs Commerce OÜ, All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <body>
+        <referenceContainer name="content">
+            <uiComponent name="points_history_listing"/>
+        </referenceContainer>
+
+        <referenceContainer name="after.body.start">
+            <block class="BrainActs\RewardPoints\Block\Adminhtml\History\Container" name="reward.points.dialog"  template="BrainActs_RewardPoints::dialog.phtml">
+                <block class="BrainActs\RewardPoints\Block\Adminhtml\History\Dialog\Edit" name="form.add.remove" as="reward.dialog"></block>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

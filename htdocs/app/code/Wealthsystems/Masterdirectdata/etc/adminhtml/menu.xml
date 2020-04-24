@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <!--
+        <add id="Wealthsystems_Masterdirectdata::parent" title="WS DirectData" module="Wealthsystems_Masterdirectdata" sortOrder="100" resource="Wealthsystems_Masterdirectdata::parent"/>
+        <add id="Wealthsystems_Masterdirectdata::price" title="Manage DirectData" module="Wealthsystems_Masterdirectdata" sortOrder="10" action="masterdirectdata/index/manage" resource="Wealthsystems_Masterdirectdata::index" parent="Wealthsystems_Masterdirectdata::parent"/>
+        -->
+
+        <add id="Wealthsystems_Masterb2b::masterdirectdata" title="Direct Data" translate="title" module="Wealthsystems_Masterdirectdata" sortOrder="40" parent="Wealthsystems_Masterb2b::parent" resource="Wealthsystems_Masterb2b::masterdirectdata"/>
+        <add id="Wealthsystems_Masterdirectdata::index" title="Manage Responses" translate="title" module="Wealthsystems_Masterdirectdata" sortOrder="10" parent="Wealthsystems_Masterb2b::masterdirectdata" action="masterdirectdata/index" resource="Wealthsystems_Masterdirectdata::index"/>
+
+    </menu>
+</config>

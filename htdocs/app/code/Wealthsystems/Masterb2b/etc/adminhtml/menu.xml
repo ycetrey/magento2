@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Wealthsystems_Masterb2b::parent" title="Master B2B" module="Wealthsystems_Masterb2b" sortOrder="10" resource="Wealthsystems_Masterb2b::parent"/>
+    
+    </menu>
+</config>

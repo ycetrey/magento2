@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/product/stocks" method="GET">
+        <service class="Wealthsystems\Masterstock\Api\Retrieve" method="execute"/>
+        <resources>
+            <resource ref="admin"/>
+        </resources>
+    </route>
+    <route url="/V1/product/stock/:product" method="GET">
+        <service class="Wealthsystems\Masterstock\Api\Fetch" method="execute"/>
+        <resources>
+            <resource ref="admin"/>
+        </resources>
+    </route>
+    <route url="/V1/product/stock" method="PUT">
+        <service class="Wealthsystems\Masterstock\Api\Refresh" method="execute"/>
+        <resources>
+            <resource ref="admin"/>
+        </resources>       
+    </route>
+</routes>

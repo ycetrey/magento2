@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="productsattachment_attachgrid_listing_data_source" xsi:type="string">Etatvasoft\Productsattachment\Model\ResourceModel\Productsattachment\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Etatvasoft\Productsattachment\Model\ResourceModel\Productsattachment\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">etatvasoft_attachments</argument>
+            <argument name="eventPrefix" xsi:type="string">etatvasoft_productsattachment_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">productsattachment_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Etatvasoft\Productsattachment\Model\ResourceModel\Productsattachment</argument>
+        </arguments>
+    </type>
+    <virtualType name="ProductsattachmentGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="ProductsattachmentGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Etatvasoft\Productsattachment\Model\ResourceModel\Productsattachment\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">ProductsattachmentGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+
+    
+    <virtualType name="Etatvasoft\Productsattachment\ProductAttachImageUpload" type="Etatvasoft\Productsattachment\Model\ImageUploader">
+        <arguments>
+                <argument name="baseTmpPath" xsi:type="string">productsattachment/tmp</argument>
+                <argument name="basePath" xsi:type="string">productsattachment</argument>
+                <argument name="allowedExtensions" xsi:type="array">
+                    <item name="jpg" xsi:type="string">jpg</item>
+                    <item name="png" xsi:type="string">png</item>
+                    <item name="jpeg" xsi:type="string">jpeg</item>
+                    <item name="jfif" xsi:type="string">jfif</item>
+                    <item name="gif" xsi:type="string">gif</item>
+                    <item name="bmp" xsi:type="string">bmp</item>
+                    <item name="ods" xsi:type="string">ods</item>
+                    <item name="doc" xsi:type="string">doc</item>
+                    <item name="docx" xsi:type="string">docx</item>
+                    <item name="xls" xsi:type="string">xls</item>
+                    <item name="xlsx" xsi:type="string">xlsx</item>
+                    <item name="pdf" xsi:type="string">pdf</item>
+                    <item name="csv" xsi:type="string">csv</item>
+                    <item name="txt" xsi:type="string">txt</item>
+                    <item name="rtf" xsi:type="string">rtf</item>
+                </argument>
+        </arguments>
+    </virtualType>
+    <type name="Etatvasoft\Productsattachment\Controller\Adminhtml\Attachgrid\Upload">
+        <arguments>
+                <argument name="imageUploader" xsi:type="object">Etatvasoft\Productsattachment\ProductAttachImageUpload</argument>
+        </arguments>
+    </type>
+
+</config>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+  Frenet Shipping Gateway
+
+  @category Frenet
+  @package Frenet\Shipping
+  @author Tiago Sampaio <tiago@tiagosampaio.com>
+  @link https://github.com/tiagosampaio
+  @link https://tiagosampaio.com
+
+  Copyright (c) 2019.
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Frenet\Shipping\Api\ServiceApiInterface" type="Frenet\Shipping\Model\ApiService"/>
+    <preference for="Frenet\Shipping\Api\CalculatorInterface" type="Frenet\Shipping\Model\Calculator"/>
+    <preference for="Frenet\Shipping\Api\Data\AttributesMappingInterface" type="Frenet\Shipping\Model\Catalog\Product\AttributesMapping"/>
+    <preference for="Frenet\Shipping\Api\QuoteItemValidatorInterface" type="Frenet\Shipping\Model\Quote\ItemValidator"/>
+    <preference for="Frenet\Shipping\Model\Quote\ItemQuantityCalculatorInterface" type="Frenet\Shipping\Model\Quote\ItemQuantityCalculator"/>
+    <preference for="Frenet\Shipping\Api\WeightConverterInterface" type="Frenet\Shipping\Model\WeightConverter"/>
+    <preference for="Frenet\Shipping\Model\ServiceFinderInterface" type="Frenet\Shipping\Model\ServiceFinder"/>
+    <preference for="Frenet\Shipping\Model\TrackingInterface" type="Frenet\Shipping\Model\Tracking"/>
+
+    <type name="Frenet\Shipping\Model\Calculator">
+        <arguments>
+            <argument name="dimensionsExtractor" xsi:type="object">Frenet\Shipping\Model\Catalog\Product\DimensionsExtractor</argument>
+        </arguments>
+    </type>
+</config>

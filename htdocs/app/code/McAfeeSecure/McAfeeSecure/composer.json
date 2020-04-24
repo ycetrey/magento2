@@ -1,0 +1,23 @@
+{
+  "name": "mcafeesecure/module-mcafeesecure",
+  "description": "TrustedSite module for Magento 2.",
+  "type": "magento2-module",
+  "keywords": ["security"],
+  "version": "0.0.9",
+  "authors": [
+    {
+      "name": "TrustedSite"
+    }
+  ],
+  "license": [
+    "GPL-3.0"
+  ],
+  "require": {
+  },
+  "autoload": {
+    "files": [ "registration.php" ],
+    "psr-4": {
+      "McAfeeSecure\\McAfeeSecure\\": ""
+    }
+  }
+}

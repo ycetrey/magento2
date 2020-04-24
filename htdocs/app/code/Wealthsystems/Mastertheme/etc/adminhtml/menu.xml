@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <!--
+        <add id="Wealthsystems_Mastertheme::parent" title="WS Theme" module="Wealthsystems_Mastertheme" sortOrder="100" resource="Wealthsystems_Mastertheme::parent"/>
+        <add id="Wealthsystems_Mastertheme::index" title="Theme Management" module="Wealthsystems_Mastertheme" sortOrder="10" action="mastertheme/index" resource="Wealthsystems_Mastertheme::index" parent="Wealthsystems_Mastertheme::parent"/>	
+        -->
+        <add id="Wealthsystems_Masterb2b::mastertheme" title="Manage Theme" translate="title" module="Wealthsystems_Mastertheme" sortOrder="20" parent="Wealthsystems_Masterb2b::parent" resource="Wealthsystems_Masterb2b::mastertheme"/>
+    	<add id="Wealthsystems_Mastertheme::index" title="Theme Options" translate="title" module="Wealthsystems_Mastertheme" sortOrder="10" parent="Wealthsystems_Masterb2b::mastertheme" action="mastertheme/index" resource="Wealthsystems_Mastertheme::index"/>
+    </menu>
+</config>

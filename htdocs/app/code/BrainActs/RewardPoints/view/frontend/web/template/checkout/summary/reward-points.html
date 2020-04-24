@@ -1,0 +1,13 @@
+<!--
+  ~ Copyright (c) 2018 BrainActs Commerce OÜ, All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+
+<!-- ko if: isDisplayedRewardPoints() -->
+<tr class="totals reward-points excl">
+    <th class="mark" colspan="1" scope="row" data-bind="text: reward_points"></th>
+    <td class="amount">
+        <span class="price" data-bind="text: getRewardPoints(), attr: {'data-th': reward_points}"></span>
+    </td>
+</tr>
+<!-- /ko -->

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+ <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <wa_chat>
+            <general>
+                <enable>0</enable>
+                <phone_number>+9195xxxxxxxx</phone_number>
+                <message>Hello! I am interested in your product</message>
+                <position>bottom-left</position>
+            </general>
+        </wa_chat>
+    </default>
+</config>

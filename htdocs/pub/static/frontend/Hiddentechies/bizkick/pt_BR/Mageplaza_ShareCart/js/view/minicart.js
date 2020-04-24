@@ -1,0 +1,1 @@
+/var/www/html/app/code/Mageplaza/ShareCart/view/frontend/web/js/view/minicart.js

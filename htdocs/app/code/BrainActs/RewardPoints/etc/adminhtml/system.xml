@@ -1,0 +1,55 @@
+<?xml version="1.0"?><!--
+  ~ Copyright (c) 2018 BrainActs Commerce OÜ, All rights reserved.
+  ~ See LICENSE.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="brainacts_reward_points" translate="label" type="text" sortOrder="305" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Reward Points</label>
+            <tab>sales</tab>
+            <resource>BrainActs_RewardPoints::config_reward_points</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Options</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable at Front-End</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <!--<field id="expire" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">-->
+                    <!--<label>Enable Expiration</label>-->
+                    <!--<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>-->
+                <!--</field>-->
+
+                <!--<field id="expire_period" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">-->
+                    <!--<label>Expiration Period</label>-->
+                    <!--<comment>In Days</comment>-->
+                    <!--<depends>-->
+                        <!--<field id="brainacts_reward_points/general/expire">1</field>-->
+                    <!--</depends>-->
+                <!--</field>-->
+
+            </group>
+            <!--<group id="admin" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">-->
+                <!--<label>Back-End Options</label>-->
+                <!--<field id="report_access_role" translate="label" type="multiselect" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">-->
+                    <!--<label>Role With Full Access to History</label>-->
+                    <!--<source_model>BrainActs\RewardPoints\Model\Config\Source\Roles</source_model>-->
+                    <!--<comment>This role will see deleted and expired history items</comment>-->
+                <!--</field>-->
+            <!--</group>-->
+
+            <group id="rules" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Simple Rules</label>
+                <field id="register" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Registration</label>
+                </field>
+                <field id="wishlist" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Share Wish List</label>
+                </field>
+                <field id="review" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Submit Review</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

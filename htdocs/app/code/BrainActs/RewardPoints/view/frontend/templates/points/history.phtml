@@ -1,0 +1,34 @@
+<?php
+/**
+ * Copyright (c) 2018 BrainActs Commerce OÜ, All rights reserved.
+ * See LICENSE.txt for license details.
+ */
+?>
+<?php /** @var \BrainActs\RewardPoints\Block\Customer\History $block */?>
+<?php $history = $block->getPoints(); ?>
+<p><strong><?php /* @escapeNotVerified */ echo __('You have %1 point(s)', $block->getRewardPointsTotal()) ?></strong></p>
+<?php if ($history && count($history)): ?>
+    <div class="table-wrapper orders-history">
+        <table class="data table table-order-items history" id="my-orders-table">
+            <caption class="table-caption"><?php /* @escapeNotVerified */ echo __('Points') ?></caption>
+            <thead>
+                <tr>
+                    <th scope="col" class="col"><?php /* @escapeNotVerified */ echo __('Points') ?></th>
+                    <th scope="col" class="col"><?php /* @escapeNotVerified */ echo __('Reason') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($history as $item): ?>
+                    <tr>
+                        <td data-th="<?php echo $block->escapeHtml(__('Points')) ?>" class="col"><?php /* @escapeNotVerified */ echo $item->getPoints() ?></td>
+                        <td data-th="<?php echo $block->escapeHtml(__('Rule Name')) ?>" class="col"><?php /* @escapeNotVerified */ echo $block->prepareReason($item->getRuleName(), $item->getReason()) ?></td>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if ($block->getPagerHtml()): ?>
+        <div class="order-products-toolbar toolbar bottom"><?php echo $block->getPagerHtml(); ?></div>
+    <?php endif ?>
+<?php else: ?>
+    <div class="message info empty"><span><?php /* @escapeNotVerified */ echo __('You have no reward points history.'); ?></span></div>
+<?php endif ?>

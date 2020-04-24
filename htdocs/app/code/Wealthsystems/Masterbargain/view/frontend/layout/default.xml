@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!--
+        <referenceContainer name="content">
+            <block class="Wealthsystems\Masterbargain\Block\Masterbargain" name="mp.Masterbargain.InlineTop" template="Wealthsystems_Masterbargain::bargain.phtml" before="-">
+                <arguments>
+                    <argument name="page" xsi:type="string">product_page</argument>
+                    <argument name="position" xsi:type="string">top_content</argument>
+                    <argument name="type" xsi:type="string">inline</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        -->
+        <referenceContainer name="content">
+            <block class="Wealthsystems\Masterbargain\Block\Masterbargain" name="bargain.popup" template="Wealthsystems_Masterbargain::popup.phtml" />
+        </referenceContainer>
+    </body>
+</page>

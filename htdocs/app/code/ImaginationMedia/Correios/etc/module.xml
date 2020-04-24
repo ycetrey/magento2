@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Correios
+ *
+ * Correios Shipping Method for Magento 2.
+ *
+ * @package ImaginationMedia\Correios
+ * @author Igor Ludgero Miura <igor@imaginemage.com>
+ * @copyright Copyright (c) 2017 Imagination Media (http://imaginemage.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Module/etc/module.xsd">
+    <module name="ImaginationMedia_Correios" setup_version="1.1.6">
+    </module>
+</config>

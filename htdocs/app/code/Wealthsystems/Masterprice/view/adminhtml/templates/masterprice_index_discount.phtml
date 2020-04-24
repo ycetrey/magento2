@@ -1,0 +1,160 @@
+<div class="container">
+    <div><input name="form_key" type="hidden" value="<?= $this->getFormKey() ?>"></div>
+
+    <span class="msg">*clique e arraste para ordernar as regras.</span>
+
+    <button onclick="saveRule()" title="Salvar" type="button" class="btn-save action-default scalable save primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" style="">
+        <span><span><span>Salvar</span></span></span>
+    </button>
+
+    <div class="list-item" id="sortable">
+
+        <?php
+        $discountrule = $block->getRules()->getCollection();
+
+        if (count($discountrule)) {
+            foreach ($discountrule as $rule) {
+                ?>
+                <div class="item ui-state-default">
+                    <div class="query">
+                        <span class="subtitle">Regras de consulta</span><br>
+                        <textarea class="query-text" name="query[]"><?= $rule->getQuery() ?></textarea>
+                    </div>
+
+                    <div class="rules">
+                        <div class="list-rules">
+
+                            <?php
+                                    $variables = json_decode($rule->getVariable());
+                                    foreach ($variables as $var) {
+                                        ?>
+                                <div class="select-rules">
+                                    <span class="subtitle">Variáveis</span>
+
+                                    <select name="variable[<?= substr(md5(microtime() . rand()), 0, 14) ?>][<?= substr(md5(microtime() . rand()), 0, 14) ?>]" class="variable" title="">
+                                        <option value="" selected="selected">Selecione</option>
+                                        <option <?= $var == 'store_id' ? 'selected="selected"' : '' ?> value="store_id">store_id</option>
+                                        <option <?= $var == 'region_id' ? 'selected="selected"' : '' ?> value="region_id">region_id</option>
+                                        <option <?= $var == 'customer_id' ? 'selected="selected"' : '' ?> value="customer_id">customer_id</option>
+                                        <option <?= $var == 'customer_group_id' ? 'selected="selected"' : '' ?> value="customer_group_id">customer_group_id</option>
+                                        <option <?= $var == 'condpay_id' ? 'selected="selected"' : '' ?> value="condpay_id">condpay_id</option>
+                                        <option <?= $var == 'product_id' ? 'selected="selected"' : '' ?> value="product_id">product_id</option>
+                                        <option <?= $var == 'order_type' ? 'selected="selected"' : '' ?> value="order_type">order_type</option>
+                                    </select>
+                                    <button onclick="removeOption(this)" class="scalable delete btn-remove  action-default scalable save primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button"><span><span><span>Remove</span></span></span></button>
+                                </div>
+                            <?php
+                                    }
+                                    ?>
+
+                        </div>
+                        <div class="add-rules">
+                            <button onclick="addOption(this)" class="btn-add action-default scalable save primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button">
+                                <span><span><span>Nova Variável</span></span></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="option">
+                        <button onclick="removeRule(this)" class="scalable delete btn-remove  action-default scalable save primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button">Remover Regra</button>
+                        <button onclick="resetRule(this)" class="scalable reset btn-reset  action-default scalable save primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button">Limpar Regra</button>
+                    </div>
+                </div>
+            <?php
+                }
+            } else {
+            ?>
+
+            <div class="item ui-state-default">
+                <div class="query">
+                    <span class="subtitle">Regras de consulta</span><br>
+                    <textarea class="query-text" name="query[]"></textarea>
+                </div>
+
+                <div class="rules">
+                    <div class="list-rules">
+                        <div class="select-rules">
+                            <span class="subtitle">Variáveis</span>
+
+                            <select name="variable[<?= substr(md5(microtime() . rand()), 0, 14) ?>][<?= substr(md5(microtime() . rand()), 0, 14) ?>]" class="variable" title="">
+                                <option value="" selected="selected">Selecione</option>
+                                <option value="store_id">store_id</option>
+                                <option value="region_id">region_id</option>
+                                <option value="customer_id">customer_id</option>
+                                <option value="customer_group_id">customer_group_id</option>
+                                <option value="condpay_id">condpay_id</option>
+                                <option value="order_type">order_type</option>
+                                <option value="product_id">product_id</option>
+                            </select>
+
+                            <button onclick="removeOption(this)" class="scalable delete btn-remove  action-default scalable save primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button"><span><span><span>Remove</span></span></span></button>
+                        </div>
+                    </div>
+                    <div class="add-rules">
+                        <button onclick="addOption(this)" class="btn-add action-default scalable save primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button">
+                            <span><span><span>Nova Variável</span></span></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="option">
+                    <button onclick="removeRule(this)" class="scalable delete btn-remove  action-default scalable save primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button">Remover Regra</button>
+                    <button onclick="resetRule(this)" class="scalable reset btn-reset  action-default scalable save primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button">Limpar Regra</button>
+                </div>
+            </div>
+
+        <?php
+        }
+        ?>
+
+    </div>
+    <div>
+        <button onclick="addRule();checkDefault();" class="btn-add action-default scalable save primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" type="button">
+            <span><span><span>Nova Regra</span></span></span>
+        </button>
+    </div>
+
+
+    <script>
+        jQuery("#sortable").sortable();
+
+        function saveRule() {
+            var level = [];
+
+            var r_rules = [];
+            var r_query = [];
+            var r_isdefault = [];
+            var r_variables = [];
+
+            jQuery('.item').each(function(index) {
+                r_rules = [];
+                r_query = [];
+                r_variables = [];
+
+                query = jQuery(this).find('.query-text').val();
+                r_query.push(query);
+
+                jQuery(this).find('.select-rules').each(function(index) {
+                    variable = jQuery(this).find('.variable').val();
+                    r_variables.push(variable);
+                });
+
+                r_rules.push(query);
+                r_rules.push(r_variables);
+
+                level.push(r_rules);
+            });
+
+            result = jQuery.unique(level);
+            result = JSON.stringify(result);
+
+            jQuery.post("<?= $block->getUrl("masterprice/index/discountsave"); ?>", {
+                    result: result
+                },
+                function(data) {
+                    alert('Registrado com sucesso!');
+                }
+            )
+
+        }
+    </script>

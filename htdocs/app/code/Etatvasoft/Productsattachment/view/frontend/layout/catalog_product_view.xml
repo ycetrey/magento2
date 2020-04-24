@@ -1,0 +1,11 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+		<referenceBlock name="product.info.details">
+			<block class="Etatvasoft\Productsattachment\Block\Product\View" name="attachment.tab" template="Etatvasoft_Productsattachment::attachmenttab.phtml" group="detailed_info"  ifconfig="productsattachment/general/enable">
+				<arguments>
+					<argument translate="true" name="title" xsi:type="string">Attachments</argument>
+				</arguments>
+			</block>			
+		</referenceBlock>
+	</body>
+</page>
