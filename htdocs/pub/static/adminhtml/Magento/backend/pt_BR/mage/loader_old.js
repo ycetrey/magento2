@@ -1,1 +1,0 @@
-/var/www/html/lib/web/mage/loader_old.js

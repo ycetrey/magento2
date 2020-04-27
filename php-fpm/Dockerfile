@@ -10,12 +10,21 @@ RUN apt-get update \
     nano
 
 # Common php-ext and requirements
-RUN apt-get install -y --no-install-recommends libpq-dev libz-dev \
+RUN apt-get install -y libxml2-dev libxslt1-dev libpq-dev libz-dev zlib1g-dev libicu-dev g++\
  && docker-php-ext-install pcntl \
  && docker-php-ext-install session \
  && docker-php-ext-install phar \
  && docker-php-ext-install iconv \
- && docker-php-ext-install pdo
+ && docker-php-ext-install soap \
+ && docker-php-ext-install pdo \
+ && docker-php-ext-install pdo_mysql \
+ && docker-php-ext-install mbstring \
+ && docker-php-ext-install zip \
+ && docker-php-ext-install intl \
+ && docker-php-ext-install xsl \
+ && docker-php-ext-install soap \
+ && docker-php-ext-install sockets
+ 
 
 #####################################
 # GD:
@@ -128,6 +137,9 @@ RUN if [ ${INSTALL_OPCACHE} = true ]; then \
 # Copy opcache configration
 COPY ./opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 
+# Copy memory configration
+COPY ./memory.ini /usr/local/etc/php/conf.d/memory.ini
+
 #####################################
 # xdebug:
 #####################################
@@ -216,6 +228,7 @@ RUN rm -rf /var/lib/apt/lists/*
 # Permissions
 RUN chown -R root:www-data /var/www/html
 RUN chmod u+rwx,g+rx,o+rx /var/www/html
+
 RUN find /var/www/html -type d -exec chmod u+rwx,g+rx,o+rx {} +
 RUN find /var/www/html -type f -exec chmod u+rw,g+rw,o+r {} +
 

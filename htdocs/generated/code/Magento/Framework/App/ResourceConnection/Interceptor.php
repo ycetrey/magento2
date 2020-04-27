@@ -17,6 +17,45 @@ class Interceptor extends \Magento\Framework\App\ResourceConnection implements \
     /**
      * {@inheritdoc}
      */
+    public function getConnection($resourceName = 'default')
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'getConnection');
+        if (!$pluginInfo) {
+            return parent::getConnection($resourceName);
+        } else {
+            return $this->___callPlugins('getConnection', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function closeConnection($resourceName = 'default')
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'closeConnection');
+        if (!$pluginInfo) {
+            return parent::closeConnection($resourceName);
+        } else {
+            return $this->___callPlugins('closeConnection', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getConnectionByName($connectionName)
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'getConnectionByName');
+        if (!$pluginInfo) {
+            return parent::getConnectionByName($connectionName);
+        } else {
+            return $this->___callPlugins('getConnectionByName', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getTableName($modelEntity, $connectionName = 'default')
     {
         $pluginInfo = $this->pluginList->getNext($this->subjectType, 'getTableName');
@@ -24,6 +63,110 @@ class Interceptor extends \Magento\Framework\App\ResourceConnection implements \
             return parent::getTableName($modelEntity, $connectionName);
         } else {
             return $this->___callPlugins('getTableName', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTablePlaceholder($tableName)
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'getTablePlaceholder');
+        if (!$pluginInfo) {
+            return parent::getTablePlaceholder($tableName);
+        } else {
+            return $this->___callPlugins('getTablePlaceholder', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTriggerName($tableName, $time, $event)
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'getTriggerName');
+        if (!$pluginInfo) {
+            return parent::getTriggerName($tableName, $time, $event);
+        } else {
+            return $this->___callPlugins('getTriggerName', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMappedTableName($tableName, $mappedName)
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'setMappedTableName');
+        if (!$pluginInfo) {
+            return parent::setMappedTableName($tableName, $mappedName);
+        } else {
+            return $this->___callPlugins('setMappedTableName', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMappedTableName($tableName)
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'getMappedTableName');
+        if (!$pluginInfo) {
+            return parent::getMappedTableName($tableName);
+        } else {
+            return $this->___callPlugins('getMappedTableName', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getIdxName($tableName, $fields, $indexType = 'index')
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'getIdxName');
+        if (!$pluginInfo) {
+            return parent::getIdxName($tableName, $fields, $indexType);
+        } else {
+            return $this->___callPlugins('getIdxName', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFkName($priTableName, $priColumnName, $refTableName, $refColumnName)
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'getFkName');
+        if (!$pluginInfo) {
+            return parent::getFkName($priTableName, $priColumnName, $refTableName, $refColumnName);
+        } else {
+            return $this->___callPlugins('getFkName', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSchemaName($resourceName)
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'getSchemaName');
+        if (!$pluginInfo) {
+            return parent::getSchemaName($resourceName);
+        } else {
+            return $this->___callPlugins('getSchemaName', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTablePrefix()
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'getTablePrefix');
+        if (!$pluginInfo) {
+            return parent::getTablePrefix();
+        } else {
+            return $this->___callPlugins('getTablePrefix', func_get_args(), $pluginInfo);
         }
     }
 }

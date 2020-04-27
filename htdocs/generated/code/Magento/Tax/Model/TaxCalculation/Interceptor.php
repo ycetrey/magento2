@@ -26,4 +26,30 @@ class Interceptor extends \Magento\Tax\Model\TaxCalculation implements \Magento\
             return $this->___callPlugins('calculateTax', func_get_args(), $pluginInfo);
         }
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDefaultCalculatedRate($productTaxClassID, $customerId = null, $storeId = null)
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'getDefaultCalculatedRate');
+        if (!$pluginInfo) {
+            return parent::getDefaultCalculatedRate($productTaxClassID, $customerId, $storeId);
+        } else {
+            return $this->___callPlugins('getDefaultCalculatedRate', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCalculatedRate($productTaxClassID, $customerId = null, $storeId = null)
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'getCalculatedRate');
+        if (!$pluginInfo) {
+            return parent::getCalculatedRate($productTaxClassID, $customerId, $storeId);
+        } else {
+            return $this->___callPlugins('getCalculatedRate', func_get_args(), $pluginInfo);
+        }
+    }
 }

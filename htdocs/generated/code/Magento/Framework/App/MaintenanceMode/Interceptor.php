@@ -17,6 +17,19 @@ class Interceptor extends \Magento\Framework\App\MaintenanceMode implements \Mag
     /**
      * {@inheritdoc}
      */
+    public function isOn($remoteAddr = '')
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'isOn');
+        if (!$pluginInfo) {
+            return parent::isOn($remoteAddr);
+        } else {
+            return $this->___callPlugins('isOn', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function set($isOn)
     {
         $pluginInfo = $this->pluginList->getNext($this->subjectType, 'set');
@@ -24,6 +37,32 @@ class Interceptor extends \Magento\Framework\App\MaintenanceMode implements \Mag
             return parent::set($isOn);
         } else {
             return $this->___callPlugins('set', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setAddresses($addresses)
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'setAddresses');
+        if (!$pluginInfo) {
+            return parent::setAddresses($addresses);
+        } else {
+            return $this->___callPlugins('setAddresses', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAddressInfo()
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'getAddressInfo');
+        if (!$pluginInfo) {
+            return parent::getAddressInfo();
+        } else {
+            return $this->___callPlugins('getAddressInfo', func_get_args(), $pluginInfo);
         }
     }
 }

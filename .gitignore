@@ -1,0 +1,14 @@
+.env
+./database/db80
+
+htdocs/var/cache/*
+htdocs/var/composer_home/*
+htdocs/var/log/*
+htdocs/var/report/*
+htdocs/var/session/*
+htdocs/var/view_preprocessed/*
+
+htdocs/generated/code/*
+htdocs/vendor/*
+
+htdocs/composer.lock

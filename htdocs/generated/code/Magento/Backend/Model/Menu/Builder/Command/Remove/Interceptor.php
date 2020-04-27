@@ -17,6 +17,32 @@ class Interceptor extends \Magento\Backend\Model\Menu\Builder\Command\Remove imp
     /**
      * {@inheritdoc}
      */
+    public function getId()
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'getId');
+        if (!$pluginInfo) {
+            return parent::getId();
+        } else {
+            return $this->___callPlugins('getId', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function chain(\Magento\Backend\Model\Menu\Builder\AbstractCommand $command)
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'chain');
+        if (!$pluginInfo) {
+            return parent::chain($command);
+        } else {
+            return $this->___callPlugins('chain', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function execute(array $itemParams = [])
     {
         $pluginInfo = $this->pluginList->getNext($this->subjectType, 'execute');

@@ -17,6 +17,32 @@ class Interceptor extends \Magento\Quote\Model\Quote\Item\Processor implements \
     /**
      * {@inheritdoc}
      */
+    public function init(\Magento\Catalog\Model\Product $product, \Magento\Framework\DataObject $request) : \Magento\Quote\Model\Quote\Item
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'init');
+        if (!$pluginInfo) {
+            return parent::init($product, $request);
+        } else {
+            return $this->___callPlugins('init', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function prepare(\Magento\Quote\Model\Quote\Item $item, \Magento\Framework\DataObject $request, \Magento\Catalog\Model\Product $candidate) : void
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'prepare');
+        if (!$pluginInfo) {
+            parent::prepare($item, $request, $candidate);
+        } else {
+            $this->___callPlugins('prepare', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function merge(\Magento\Quote\Model\Quote\Item $source, \Magento\Quote\Model\Quote\Item $target) : \Magento\Quote\Model\Quote\Item
     {
         $pluginInfo = $this->pluginList->getNext($this->subjectType, 'merge');

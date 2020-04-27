@@ -78,4 +78,30 @@ class Interceptor extends \Magento\Quote\Model\QuoteRepository implements \Magen
             return $this->___callPlugins('save', func_get_args(), $pluginInfo);
         }
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function delete(\Magento\Quote\Api\Data\CartInterface $quote)
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'delete');
+        if (!$pluginInfo) {
+            return parent::delete($quote);
+        } else {
+            return $this->___callPlugins('delete', func_get_args(), $pluginInfo);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getList(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria)
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'getList');
+        if (!$pluginInfo) {
+            return parent::getList($searchCriteria);
+        } else {
+            return $this->___callPlugins('getList', func_get_args(), $pluginInfo);
+        }
+    }
 }

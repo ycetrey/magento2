@@ -52,4 +52,17 @@ class Interceptor extends \Magento\CatalogInventory\Helper\Stock implements \Mag
             return $this->___callPlugins('addInStockFilterToCollection', func_get_args(), $pluginInfo);
         }
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addIsInStockFilterToCollection($collection)
+    {
+        $pluginInfo = $this->pluginList->getNext($this->subjectType, 'addIsInStockFilterToCollection');
+        if (!$pluginInfo) {
+            return parent::addIsInStockFilterToCollection($collection);
+        } else {
+            return $this->___callPlugins('addIsInStockFilterToCollection', func_get_args(), $pluginInfo);
+        }
+    }
 }

@@ -1,1 +1,0 @@
-/var/www/html/lib/web/mage/collapsible.js
