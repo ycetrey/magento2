@@ -1,5 +1,5 @@
 .env
-./database/db80
+database/db80/
 
 htdocs/var/cache/*
 htdocs/var/composer_home/*
